@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="card shadow-sm"><div class="card-body p-4">
+  <h4 class="mb-3">Create account</h4>
+  <form method="post" novalidate>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="mb-3"><label class="form-label">Username</label>
+      <input class="form-control" name="username" value="{{ request.form.get('username','') }}" required></div>
+    <div class="mb-3"><label class="form-label">Email</label>
+      <input class="form-control" type="email" name="email" value="{{ request.form.get('email','') }}" required></div>
+    <div class="mb-3"><label class="form-label">Password</label>
+      <input class="form-control" type="password" name="password" required>
+      <div class="form-text">8+ chars with upper, lower, digit and special character.</div></div>
+    <div class="mb-3"><label class="form-label">Confirm password</label>
+      <input class="form-control" type="password" name="confirm" required></div>
+    <button class="btn btn-primary w-100">Register</button>
+  </form>
+  <p class="mt-3 mb-0 text-center">Already registered? <a href="{{ url_for('login') }}">Log in</a></p>
+</div></div>
+{% endblock %}
